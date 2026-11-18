@@ -1,0 +1,1 @@
+{"runId":"example-review-01","workItem":"pricing-rounding","workspaceDir":"./example-workspace","intent":"Preserve cents in invoice totals without changing unrelated behavior.","maxActorCalls":2,"maxReviewCalls":16,"maxConcurrentReviewers":3}

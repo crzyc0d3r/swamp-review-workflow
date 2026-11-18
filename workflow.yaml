@@ -1,0 +1,35 @@
+id: 2037ef45-43dd-467a-baca-357fc8f72365
+name: "@example/review-resource"
+description: Delegate review and repair to an explicitly installed native extension.
+version: 1
+inputs:
+  properties:
+    runId:
+      type: string
+    workItem:
+      type: string
+    workspaceDir:
+      type: string
+    intent:
+      type: string
+  required: [runId, workItem, workspaceDir, intent]
+jobs:
+  - name: review
+    concurrency: 1
+    steps:
+      - name: bounded-review
+        task:
+          type: model_method
+          modelType: "@adam/garfield"
+          modelName: workflow-garfield
+          methodName: run
+          inputs:
+            runId: ${{ inputs.runId }}
+            workItem: ${{ inputs.workItem }}
+            workspaceDir: ${{ inputs.workspaceDir }}
+            intent: ${{ inputs.intent }}
+        dependsOn: []
+        allowFailure: false
+        weight: 0
+    dependsOn: []
+    weight: 0
